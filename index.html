@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Vue.js Pet Depot</title>
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+        </head>
+        <body>
+            <!--Vue.js app-->
+            <div id="app">
+                <header>
+                    <h1 v-text="sitename"></h1>
+                </header>
+                <main>
+                    <figure>
+                        <img v-bind:src="product.image">
+                    </figure>
+                    <h2 v-text="product.title"></h2>
+                    <p v-html="product.description"></p>
+                    <p>Price : {{product.price}} </p>
+                    <p>Deez nuts</p>
+                    <button v-on:click="addToCart">
+                        Add to Cart
+                    </button>
+                </main>
+            </div>
+            <!-- Vue.js code-->
+            <script type="text/javascript">
+                // webstore Vue.js code
+                var webstore= new Vue({
+                    el:'#app',
+                    data:{
+                        sitename:"Vue.js Pet Depot",
+                        product:{
+                            id:1001,
+                            title:'Cat Food, 25lbs bag',
+                            description:"A 25 pound bag of <em>irresistible</em>" + "  organice goodness for your cat.",
+                            price: 2000,
+                            image: 'images/product-fullsize.jpg'
+                        },
+                        cart:[],
+                    },
+                    methods :{
+                            addToCart: function(){
+                                this.cart.push(this.product.id);
+                                console.log(this.cart);
+                            }
+
+                        }
+                });
+            </script>
+        </body>
+    </html>
